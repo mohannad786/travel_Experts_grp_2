@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= Error please correct
+  
+  if errors
+    ul
+      each error in errors
+        li.alert.alert-danger.m3= error

@@ -1,0 +1,48 @@
+extends layout
+
+block content  
+  .contact
+     
+    .banner
+      .herotext
+        h1 
+  
+    
+  if errors 
+    each error in errors 
+      p #{error}      
+  a.float-end.bg-secondary(href="/login")
+  <br>  
+  <br>
+  h3 Log-in or Sign-up if you not registered
+  
+  form(method='Post' action='/login')
+    p
+      label(for='username')
+      input#fname(type='text' name='username' placeholder='Enter your username..' required='')
+    p
+      label(for='password') 
+      input#lname(type='password' name='password' placeholder='Enter your password..' required='')
+    p
+      input.roundbtn(type='submit' value='Log-in')       
+    
+    
+  form(method='Post' action='/signup')
+    
+    p
+      label(for='username')
+      input#fname(type='text' name='username' placeholder='Enter your username..' required='')
+    p
+      label(for='password') 
+      input#lname(type='password' name='password' placeholder='Enter your password..' required='')
+    p
+      label(for='firstname')  
+      input#email(type='text' name='fname' placeholder='firstname' required='')
+    p
+      label(for='lastname')  
+      input#email(type='text' name='lname' placeholder='lastname' required='')
+    p
+      label(for='email')  
+      input#email(type='email' name='email' placeholder='email' required='')
+    p
+      input.roundbtn(type='submit' value='Register')        

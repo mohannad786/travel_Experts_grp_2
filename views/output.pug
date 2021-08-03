@@ -1,0 +1,60 @@
+extends layout
+
+block content
+
+ extends layout
+
+block content
+
+  header
+  
+    nav
+      ul
+        li
+          a(href='contact') Contact
+        li
+          a(href='login') login
+        li
+          a(href='gallery') Explore
+        li
+          a(href='/') Home
+  
+    .banner
+      .herotext
+        h1 Vacation Time
+        h2 Are you ready for some fun, check out our current packages
+
+  .grid-container
+    .intro.p-lr
+      h3 We offer you the best travel packages at the lowest cost
+      h3 #{greet_msg}
+      h3 You have logged in on #{date_time}
+        .galleryIntro
+      h2 Gallery
+      .flex-container
+        figure.flex-item
+          img(src='/images/thai1.jpg', alt='thai')
+          figcaption Thailand starting from $4000
+        figure.flex-item
+          img(src='images/thai2.jpg', alt='thai2')
+          figcaption Thailand starting from $2500
+        figure.flex-item
+          img(src='images/mald1.jpg', alt='mald1')
+          figcaption Maldives starting from $3000
+        figure.flex-item
+          img(src='images/mald2.jpg', alt='mald2')
+          figcaption Maldives starting from $3500
+        figure.flex-item
+          img(src='images/gre1.jpg', alt='gre1')
+          figcaption Greece starting from $3500
+        figure.flex-item
+          img(src='images/gre2.jpg', alt='gre2')
+          figcaption Greece starting from $4500
+      .art.p-lr
+        h2 Article
+        p
+  //
+    Comment//
+  footer
+    pCopyright &copy; 2021</p>
+ 

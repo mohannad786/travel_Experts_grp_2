@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  
+  .contact
+     
+    .banner
+      .herotext
+        h1 
+    <br>
+    <br>    
+    h3 For urgent inquiries call: 1-800-helpus1
+    <br>
+    h3 Fill out the form in case you have any other question
+    
+  form(method='Post' action='/contact')
+    p
+      label(for='firstname')
+      input#fname(type='text' name='firstname' placeholder='Enter your first name..' required='')
+    p
+      label(for='lastname') 
+      input#lname(type='text' name='lastname' placeholder='Enter your last name..' required='')
+    p
+      label(for='email')  
+      input#email(type='email' name='email' placeholder='Email address' required='')
+    p
+      label(for='comment') 
+      textarea#comment(name='comment' placeholder='Give you comments...' rows='5' required='')
+    p
+      input.roundbtn(type='submit' value='submit')
+
+  if errors
+    ul
+      each error in errors
+        li.alert.alert-danger.m3= error
+
+    //- .map 
+    //-   figure
+    //-     img(src='images/login.jpg' width='40' height='37' alt='dog in a hat')
+    //-     figcaption Contact us 
+
+  
+  
+  
+
+      
+
+  
+  
+  
+  

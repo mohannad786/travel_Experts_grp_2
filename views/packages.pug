@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  //- var i = 0 ;
+  .container
+    h2.bg-info Packages
+      .card-group
+        each pack in mypackages
+          .card
+            img.card-img-top(src=pack.imgpath alt='...')
+            .card-body
+              h5.card-title #{pack.name}
+              p.card-text
+                | Price: #{pack.price}
+              if !isdetails
+                a.btn.btn-primary(href='/packages/details/'+ pack.packid)  Details
+      if isdetails
+        a(href='/packages') Back
+    p 
+        a(href='/') Home

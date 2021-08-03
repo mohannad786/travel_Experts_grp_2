@@ -1,0 +1,16 @@
+if !hideLogin
+    
+        form.row.g-3(action="/login" method="POST")
+            .col
+                h5 
+            .col            
+                input.form-control(name="username" placeholder="Username" type="text")
+            .col
+                input.form-control(name="password" type="password" placeholder="Password")
+            .col
+                button.btn.btn-primary.mb-2 Log In
+   
+        a.float-end.bg-secondary(href="/signup") 
+            h5 Register
+  
+  

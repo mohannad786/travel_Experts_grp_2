@@ -1,0 +1,41 @@
+
+{
+"packageId":{"$numberInt":"1"},
+"PkgName":"Caribbean New Year",
+"PkgStartDate":{"$date":{"$numberLong":"1135468800000"}},
+"PkgEndDate":{"$date":{"$numberLong":"1136332800000"}},
+"PkgDesc":"Cruise the Caribbean & Celebrate the New Year.","
+PkgBasePrice":{"$numberDecimal":"3800.0000"},
+"PkgAgencyCommission":{"$numberDecimal":"400.0000"}}
+"imgpath": "/images/cub-1.jpg"
+},
+
+{
+"packageId":{"$numberInt":"2"},
+"PkgName":"Maldivese Delight",
+"PkgStartDate":{"$date":{"$numberLong":"1135468800000"}},
+"PkgEndDate":{"$date":{"$numberLong":"1136332800000"}},
+"PkgDesc":"Maldivese Delight.","
+PkgBasePrice":{"$numberDecimal":"6800.0000"},
+"PkgAgencyCommission":{"$numberDecimal":"400.0000"}}
+"imgpath": "/images/mald2.jpg"
+},
+{
+"packageId":{"$numberInt":"3"},
+"PkgName":"Hawaii Special",
+"PkgStartDate":{"$date":{"$numberLong":"1135468800000"}},
+"PkgEndDate":{"$date":{"$numberLong":"1136332800000"}},
+"PkgDesc":"Hawaii Special.","
+PkgBasePrice":{"$numberDecimal":"3800.0000"},
+"PkgAgencyCommission":{"$numberDecimal":"400.0000"}}
+}
+{
+"PackageId":{"$numberInt":"2"},
+"PkgName":"Polynesian Paradise",
+"PkgStartDate":{"$date":{"$numberLong":"1134345600000"}},
+"PkgEndDate":{"$date":{"$numberLong":"1135036800000"}},
+"PkgDesc":"8 Day All Inclusive Hawaiian Vacation",
+"PkgBasePrice":{"$numberDecimal":"3000.0000"},
+"PkgAgencyCommission":{"$numberDecimal":"310.0000"}}
+"imgpath": "/images/haw-1.jpg"
+}
