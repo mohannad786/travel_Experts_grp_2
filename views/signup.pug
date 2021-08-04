@@ -14,7 +14,7 @@ block content
   a.float-end.bg-secondary(href="/login")
   <br>  
   <br>
-  h3 Log-in or Sign-up if you not registered
+  h3 Log-in
   
   form(method='Post' action='/login')
     p
@@ -26,7 +26,7 @@ block content
     p
       input.roundbtn(type='submit' value='Log-in')       
     
-    
+  h3 Sign-up if you not registered
   form(method='Post' action='/signup')
     
     p
@@ -37,12 +37,17 @@ block content
       input#lname(type='password' name='password' placeholder='Enter your password..' required='')
     p
       label(for='firstname')  
-      input#email(type='text' name='fname' placeholder='firstname' required='')
+      input#email(type='text' name='fname' placeholder='First name' required='')
     p
       label(for='lastname')  
-      input#email(type='text' name='lname' placeholder='lastname' required='')
+      input#email(type='text' name='lname' placeholder='Last name' required='')
     p
       label(for='email')  
-      input#email(type='email' name='email' placeholder='email' required='')
+      input#email(type='email' name='email' placeholder='Email address' required='')
     p
-      input.roundbtn(type='submit' value='Register')        
+      input.roundbtn(type='submit' value='Register')
+
+  .map
+    figure
+      img(src='images/beach1.jpg' alt='beach')
+         
