@@ -11,7 +11,7 @@ var mongo = require("mongodb").MongoClient; //const url = "mongodb://localhost:2
 var uniqueValidator = require("mongoose-unique-validator");
 
 function getPackages(pid, callback) {
-  mongo.connect(MONGO_URL, {
+  mongo.connect(process.env.MONGO_URL, {
     // Create the DB connection
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -66,10 +66,12 @@ router.get('/', function (req, res, next) {
     });
   });
 });
+console.log("hello");
 /* GET one product listing. */
 
 router.get('/details/:packid', function (req, res, next) {
   var packid = req.params.packid;
+  console.log(packid);
   getPackages(packid, function (err, data) {
     if (err) throw err;
     res.render('packages', {

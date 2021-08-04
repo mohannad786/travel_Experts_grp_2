@@ -7,7 +7,7 @@ const mongo = require("mongodb").MongoClient;
 const uniqueValidator = require("mongoose-unique-validator");
 
 function getPackages(pid, callback) {
-  mongo.connect(MONGO_URL, {  // Create the DB connection
+  mongo.connect(process.env.MONGO_URL, {  // Create the DB connection
     useNewUrlParser: true,
     useUnifiedTopology: true
   },
@@ -48,6 +48,7 @@ function getPackages(pid, callback) {
 
 
 /* GET all packages listing. */
+
 router.get('/', function (req, res, next) {
   // Read the packages list from the DB
   getPackages(null, // null => get all packages
@@ -60,10 +61,11 @@ router.get('/', function (req, res, next) {
     }
   );
 });
-
+console.log("hello")
 /* GET one product listing. */
 router.get('/details/:packid', function (req, res, next) {
   const packid = req.params.packid
+  console.log(packid);
   getPackages(packid,
     function (err, data) {
       if (err) throw err

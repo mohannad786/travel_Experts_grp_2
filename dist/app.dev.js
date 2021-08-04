@@ -21,9 +21,8 @@ var contactRouter = require('./routes/contact');
 
 var galleryRouter = require('./routes/aboutus');
 
-var signupRouter = require('./routes/signup');
+var signupRouter = require('./routes/signup'); //var packagesRouter = require('./routes/packages');
 
-var packagesRouter = require('./routes/packages');
 
 var app = express(); // view engine setup
 
@@ -39,8 +38,8 @@ app.use(express["static"](path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use("/contact", contactRouter);
 app.use("/signup", signupRouter);
-app.use("/login", loginRouter);
-app.use("/packages", packagesRouter);
+app.use("/login", loginRouter); //app.use("/packages", packagesRouter);
+
 app.use('/user-error', function (req, res, next) {
   res.render('user-error');
 });

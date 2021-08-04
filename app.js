@@ -11,7 +11,7 @@ var loginRouter = require('./routes/login');
 var contactRouter = require('./routes/contact');
 var galleryRouter = require('./routes/aboutus');
 var signupRouter = require('./routes/signup');
-var packagesRouter = require('./routes/packages');
+//var packagesRouter = require('./routes/packages');
 var app = express();
 
 // view engine setup
@@ -28,7 +28,7 @@ app.use('/', indexRouter);
 app.use("/contact", contactRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
-app.use("/packages", packagesRouter);
+//app.use("/packages", packagesRouter);
 
 
 

@@ -1,63 +1,33 @@
 extends layout
 
 block content
+  <br>
+  <br>
+  h3 #{greet_msg}
+  h3 We offer you the best travel packages at the lowest cost
+  h3 You have logged in on #{date_time}
 
-  header
-  
-  br
-  .banner
-    .herotext
-      h1 Travelmania
-      h2 
-  .grid-container
-    .intro.p-lr
-      h3 #{greet_msg}
-      h3 We offer you the best travel packages at the lowest cost
-      h3 You have logged in on #{date_time}
-  .galleryIntro
-      h2 Check our exclusive travel packages
-      .flex-container
-        figure.flex-item
-          img(src='/images/thai1.jpg', alt='thai')
-          figcaption Thailand starting from $4000
-        figure.flex-item
-          img(src='images/thai3.jpg', alt='thai2')
-          figcaption Thailand starting from $2500
-        figure.flex-item
-          img(src='images/mald1.jpg', alt='mald1')
-          figcaption Maldives starting from $3000
-        figure.flex-item
-          img(src='images/mald2.jpg', alt='mald2')
-          figcaption Maldives starting from $3500
-        figure.flex-item
-          img(src='images/Ven1.jpg', alt='mald1')
-          figcaption Vienna starting from $3000
-        figure.flex-item
-          img(src='images/ven2.jpg', alt='mald2')
-          figcaption Vienna starting from $3500
-        figure.flex-item
-          img(src='images/haw-1.jpg', alt='gre1')
-          figcaption Hawai starting from $3500
-        figure.flex-item
-          img(src='images/Tok1.jpg', alt='gre2')
-          figcaption Tokyo starting from $4500
-        figure.flex-item
-          img(src='/images/tok2.jpg', alt='thai')
-          figcaption Tokyo starting from $4000
-        figure.flex-item
-          img(src='images/lon-1.jpg', alt='thai2')
-          figcaption London starting from $2500
-        figure.flex-item
-          img(src='images/rom1.jpg', alt='gre1')
-          figcaption Rome starting from $3500
-        figure.flex-item
-          img(src='images/rom2.jpg', alt='gre2')
-          figcaption Rome starting from $4500
-        figure.flex-item
-          img(src='/images/newyork.jpg', alt='thai')
-          figcaption New York starting from $4000
-        figure.flex-item
-          img(src='images/gre1.jpg', alt='thai2')
-          figcaption Greece starting from $2500
-      
+  .container
+    <br>
+    <br>
+    h2.bg-light Check our best deals!!
+    <br>
+      .card-group
+        each pack in mypackages
+          .package_wrapper    
+            img.card-img-top(src=pack.imgpath alt='...')
+            .card-body
+              h5.card-title #{pack.packname}
+              h5.card-title #{pack.packdetail}
+              //- p.card-text
+              //-   | Size: #{prod.size}
+              //-   | Price: #{prod.price}
+              if !isdetails
+                a.btn.btn-primary(href='/details/'+ pack.packid) Details                
+      if isdetails
+      a.btn.btn-primary(href='/details/'+ pack.packid)Booking
+      a.btn.btn-primary(href='/details/'+ pack.packid)Login 
+
+        a(href='/') Back
+    
   
