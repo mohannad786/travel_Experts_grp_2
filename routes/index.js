@@ -35,7 +35,7 @@ router.get('/', function (req, res, next) {
     function (err, packdata) { // Callback function, will be called when the data from the DB is ready
       if (err) throw err
       // Render the PUG template with the product data we got from the DB
-      res.render('index', {
+       res.render('index', {
         mypackages: packdata
       });
     }
@@ -43,8 +43,8 @@ router.get('/', function (req, res, next) {
 });
 
 /* GET one product listing. */
-router.get('/details/:packid', function (req, res, next) {
-  const packid = req.params.packid
+router.get('/:packageid', function (req, res, next) {
+  const packid = req.params.packageid
   console.log(packid);
   getPackages(packid,
     function (err, data) {
@@ -59,20 +59,20 @@ router.get('/details/:packid', function (req, res, next) {
 });
 
 
-// Generate random Greeting Program
-var myarray = ['ready for some exciting time', 'how are you today', 'good to see you', 'hope you are having a good day']
-const greet = Math.floor(Math.random() * myarray.length);
-var greetings = myarray[greet];
-console.log(myarray[greet]);
+// // Generate random Greeting Program
+// var myarray = ['ready for some exciting time', 'how are you today', 'good to see you', 'hope you are having a good day']
+// const greet = Math.floor(Math.random() * myarray.length);
+// var greetings = myarray[greet];
+// console.log(myarray[greet]);
 
   
-// /* GET home page and display greeting message */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { 
-//     greet_msg: ('Welcome to our travel Portal,'+greetings ),
-//     date_time: (new Date()).toString(),
-//   });
-// });
+// // /* GET home page and display greeting message */
+// // router.get('/', function(req, res, next) {
+// //   res.render('index', { 
+// //     greet_msg: ('Welcome to our travel Portal,'+greetings ),
+// //     date_time: (new Date()).toString(),
+// //   });
+// // });
 
 
 module.exports = router;
