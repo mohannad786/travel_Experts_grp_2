@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-console.log('tt hello');
 // Shows a single post
 router.get('/', function (req, res, next) {
   const data = req.params.email1;

@@ -5,14 +5,18 @@ block content
   .contact
        
     <br>    
-    h3 For urgent inquiries call: 1-800-helpus1
-    <br>
+    h2 For urgent inquiries call: 1-800-helpus1
+    <br> 
+    h3 Local Agency Contact
+    h3 47 Edendale Crescent SE, Airdrie
+    h3 (403) 948-2025 
+    <br>   <br>
     h3 Fill out the form in case you have any other question
     
   form(method='Post' action='/contact')
     p
       label(for='firstname')
-      input#fname(type='text' name='firstname' placeholder='Enter your first name..' required='' value=username)
+      input#fname(type='text' name='firstname' placeholder='Enter your first name..' required='')
     p
       label(for='lastname') 
       input#lname(type='text' name='lastname' placeholder='Enter your last name..' required='')

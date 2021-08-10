@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 
 var uniqueValidator = require("mongoose-unique-validator");
 
-var mongoDBurl = "mongodb://localhost:27017/blog";
+var Schema = mongoose.Schema;
 mongoose.connect(process.env.MONGO_URL || mongoDBurl, {
   useNewUrlParser: true,
   useUnifiedTopology: true

@@ -10,36 +10,17 @@ const Contact = require('../models/contact').Contact;
     res.render('contact');
   });
 
-// To create a new database entry
-router.post('/', function (req, res, next) {
-  // const = new Contact(req.body);
+// load booking data
+router.post("/", function (req, res, next) {
+  const data = req.body;
   const contact = new Contact();
-  contact.firstname = req.body.firstname
-  contact.lastname= req.body.lastname
-  contact.email= req.body.email
-  contact.comment= req.body.comment
-  contact.save(err => {
-    // if(err) throw err;
-    if (err) {
-     
-      const errorArray = [];
-      const errorKeys = Object.keys(err.errors);
-      errorKeys.forEach(key => errorArray.push(err.errors[key].message));
-      return res.render("contact", {
-        errors: errorArray
-      });
-    }
+  contact.firstname = req.body.firstname;
+  contact.lastname = req.body.lastname;
+  contact.email = req.body.email;
+  contact.comment = req.body.comment;
+  contact.save(function (err) {
+    if (err) return processErrors(err, "det", req, res, req.body);
     res.redirect("/thankyou");
-  });
-});
-
-// Shows a single contact
-router.get('/:email1', function (req, res, next) {
-  const data = req.params.email1;
-  Contact.findOne({ email: data }, (err, contact) => {
-   res.render('user-data', { userdat:contact });
-    console.log(contact.comment);
-    //console.log(userdat);
   });
 });
 
