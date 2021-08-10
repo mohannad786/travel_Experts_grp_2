@@ -211,6 +211,12 @@ nav li a:hover {
   padding: 4vw 8vw;
 }
 
+.input_wrapper {
+  margin: .5em 0;
+  text-align: center;
+  font-size: 1.2em;
+}
+
 .contactform {
   grid-area: contactform;
 }

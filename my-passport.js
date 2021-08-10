@@ -7,7 +7,7 @@ const LocalStrategy = require("passport-local").Strategy;
 module.exports.init = function (app) {
   app.use(
     require("express-session")({
-      secret: process.env.PASSPORT_SECRET,
+      secret: process.env.PASSPORT_SECRET|| "wserjoifjpsiofjfsdfs",
       resave: true,
       saveUninitialized: true,
     })
@@ -15,7 +15,7 @@ module.exports.init = function (app) {
 
   // Use a User Model to store and retrieve the user information
   const { User } = require("./models/user");
-
+  console.log(User)
   passport.use(
     // Do the login check
     new LocalStrategy(function (username, password, done) {
@@ -52,22 +52,41 @@ module.exports.init = function (app) {
   app.use(passport.initialize());
   app.use(passport.session());
   // Login Endpoint, recieves the user login from a login form
-  app.post("/login",
-    passport.authenticate("local", { failureRedirect: "/" }),
-    function (req, res) {
-      const headermessage = `Welcome ${req.user?.username}`;
-      res.redirect("/?headermessage=" + headermessage);
-    }
-  );
+  // app.post("/login",
+  //   passport.authenticate("local", { failureRedirect: "/" }),
+  //   function (req, res) {
+  //     const headermessage = `Welcome ${req.user?.username}`;
+  //     res.redirect("/?headermessage=" + headermessage);
+  //   }
+  // );
   // After login, adds the user object to locals.currentUser which is accesible in the .pug files
+  app.post("/login", function (req, res, next) {
+    passport.authenticate("local", function (err, user, info) {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.redirect("/signup");
+      }
+      req.logIn(user, function (err) {
+        if (err) {
+          res.locals.errors = ["Login failed"];
+          return next(err);
+        }
+        return res.redirect("/"); // Logged in
+      });
+    })(req, res, next);
+  });
+  
+    
   app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
   });
 
   // The logout endpoint
-  app.get("/log-out", (req, res) => {
+  app.get('/log-out', (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("signup");
   });
 };

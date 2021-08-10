@@ -4,8 +4,8 @@ block content
   <br>
   <br>
   h3 #{greet_msg}
-  h3 We offer you the best travel packages at the lowest cost
-  h3 You have logged in on #{date_time}
+  // h3 #{currentUser.username}
+  h3 #{date_time}
 
   .container
     <br>
@@ -14,18 +14,21 @@ block content
     <br>
       .card-group
         each pack in mypackages
-          .package_wrapper    
-            img.card-img-top(src=pack.imgpath alt='...')
-            .card-body
-              h5.card-title #{pack.packname}
-              h5.card-title #{pack.packdetail}
+         .package_wrapper    
+            a(href='/details/det/'+ pack.packid)
+              img.card-img-top(src=pack.imgpath alt='...')
+            a(href='/details/det/'+ pack.packid)
+              h3.card-title #{pack.packname}
+              h3.card-title #{pack.packdetail}
               //- p.card-text
               //-   | Size: #{prod.size}
               //-   | Price: #{prod.price}
-              if !isdetails
-                a.btn.btn-primary(href='/'+ pack.packid) Details                
-      if isdetails
-        a(href='/') Back
-    p 
+              
+              //- if !isdetails
+              //-   a.btn.btn-primary(href='/details/det/'+ pack.packid) Discover  
+      
+      a.btn.btn-primary Book
+        
+     
         
   

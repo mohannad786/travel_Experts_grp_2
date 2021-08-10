@@ -16,9 +16,9 @@ const pageRegister = {
 // };
 
 /* Sign-up page. */
-router.get("/", function (req, res, next) {
-  res.render("signup", pageRegister);
-});
+ router.get("/", function (req, res, next) {
+   res.render("signup", pageRegister);
+ });
 //router.get("/signup", function (req, res, next) {
 //  res.render("signup/login");
 //});

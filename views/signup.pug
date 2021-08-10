@@ -5,25 +5,34 @@ block content
     
   if errors 
     each error in errors 
-      p #{error}      
+      p #{error} 
+      p #{msg}   
+
+  
+
+
   a.float-end.bg-secondary(href="/login")
   <br>  
   <br>
   h3 Log-in
-  
-  form(method='Post' action='/login')
+   
+  form(action='/login'  method='POST')
     p
       label(for='username')
-      input#fname(type='text' name='username' placeholder='Enter your username..' required='')
+      input#fname(type='text' name='username' placeholder='Enter your username..' required='' value= currentUser && currentUser.username)
     p
       label(for='password') 
       input#lname(type='password' name='password' placeholder='Enter your password..' required='')
     p
       input.roundbtn(type='submit' value='Log-in')       
-    
+
+  p 
+    a(href='log-out') <h2>Logout
   h3 Sign-up if you not registered
+  
+  
   form(method='Post' action='/signup')
-    
+
     p
       label(for='username')
       input#fname(type='text' name='username' placeholder='Enter your username..' required='')

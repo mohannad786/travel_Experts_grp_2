@@ -7,16 +7,26 @@ var assert= require('assert');
 
 //setup routing to webpages
 var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
 var contactRouter = require('./routes/contact');
 var galleryRouter = require('./routes/aboutus');
 var signupRouter = require('./routes/signup');
+//var booking1Router = require('./routes/booking1');
 //var packagesRouter = require('./routes/packages');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine','pug');
+
+// Mongoose connection
+// const MONGO_URL = "mongodb+srv://mo:comon123@cluster0.c2uhk.mongodb.net/userdata?authSource=admin&replicaSet=atlas-rvxm88-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
+// const mongoose = require("mongoose");
+// mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "DB connection error:"));
+// db.once("open", function () {
+//   console.log("We're connected!");
+// });
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -27,14 +37,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use("/contact", contactRouter);
 app.use("/signup", signupRouter);
-app.use("/login", loginRouter);
+//app.use("/booking1", booking1Router);
+
+
 //app.use("/packages", packagesRouter);
-
-
 
  app.use('/user-error', function(req, res, next) {
   res.render('user-error');
 });
+// app.use('/', function(req, res, next) {
+//   // res.render('de');
+// });
 
 app.use('/thankyou', function(req, res, next) {
   res.render('thankyou');
@@ -48,6 +61,12 @@ app.use('/aboutus', function(req, res, next) {
 // For Passport.js
 require("./my-passport").init(app);
 // -------------------------------------------------------------
+//  Put the messages in the res.locals
+app.use((req, res, next) => {
+  res.locals.message = req.session.msg; // Read the message from the session variable
+  req.session.msg = null;
+  next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

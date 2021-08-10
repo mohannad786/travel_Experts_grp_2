@@ -1,20 +1,11 @@
-
-// Using Node.js `require()`
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
-//var mongoDBurl = "mongodb://localhost:27017/blog";
+var mongoDBurl = "mongodb://localhost:27017/blog";
 
 mongoose.connect(process.env.MONGO_URL || mongoDBurl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-const db = mongoose.connection;
-/// To log the Mongoose erros to the console directly
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("we're connected!");
-});
-
 
 const contactSchema = new mongoose.Schema({
     firstname: {

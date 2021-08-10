@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  
+  .container
+    <br>
+    <br>
+    h2.bg-light Check our best deal!!
+    <br>
+    .card-group
+      each pack in mypackages
+        .card.col-sm-12
+            img.card-img-top.mx-auto(src=pack.imgpath3 style=" max-width:400px;")
+            img.card-img-top.mx-auto(src=pack.imgpath2 style=" max-width:400px;")
+            img.card-img-top.mx-auto(src=pack.imgpath1 style=" max-width:400px;")
+            .card-body
+              h5.card-title #{pack.packname}
+              h5.card-title #{pack.packdetail}
+              h5.card-text
+                | Pacakge start date: #{pack.TripStart}
+              h5.card-text
+                | Package end date: #{pack.TripEnd}
+            
+            form(action="/book" method="POST")
+              .input_wrapper
+                label(for="TravellerCount") Number of Guests
+                input(type="number" id="TravellerCount" name="TravellerCount" required)
+                input(type='hidden' name="packageId" value= pack && pack._id)
+              .input_wrapper
+                input.btn.btn-primary(type='submit' value='Book Package')
+
+          
+   
+     
+        
+  

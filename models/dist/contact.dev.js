@@ -1,20 +1,13 @@
 "use strict";
 
-// Using Node.js `require()`
 var mongoose = require("mongoose");
 
-var uniqueValidator = require("mongoose-unique-validator"); //var mongoDBurl = "mongodb://localhost:27017/blog";
+var uniqueValidator = require("mongoose-unique-validator");
 
-
+var mongoDBurl = "mongodb://localhost:27017/blog";
 mongoose.connect(process.env.MONGO_URL || mongoDBurl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-});
-var db = mongoose.connection; /// To log the Mongoose erros to the console directly
-
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("we're connected!");
 });
 var contactSchema = new mongoose.Schema({
   firstname: {

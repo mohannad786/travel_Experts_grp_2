@@ -18,7 +18,7 @@
     "http-errors": "~1.6.3",
     "mangodb": "^1.0.0",
     "mongodb": "^4.0.1",
-    "mongoose": "^5.13.3",
+    "mongoose": "^5.13.5",
     "mongoose-sanitize": "^1.1.0",
     "mongoose-unique-validator": "^2.0.3",
     "mongoose-validator": "^2.1.0",

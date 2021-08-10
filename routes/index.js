@@ -2,8 +2,18 @@ var express = require('express');
 var router = express.Router();
 const mongo = require("mongodb").MongoClient;
 const uniqueValidator = require("mongoose-unique-validator");
+const { Packages } = require("../models/packages");
+const { Booking1 } = require("../models/booking1");
+
 // Generate random Greeting Program
 var myarray = ['ready for some exciting time', 'how are you today', 'good to see you', 'hope you are having a good day']
+
+function checkAuthenticated(req, res, next){
+  if (req.isAuthenticated()){ 
+    return next()
+  }
+  res.redirect ('/signup')
+}
 
 
 function getPackages(pid, callback) {
@@ -29,6 +39,8 @@ function getPackages(pid, callback) {
     }
   );
   }
+
+
 /* GET all packages listing. */
 
 router.get('/', function (req, res, next) {
@@ -42,32 +54,65 @@ router.get('/', function (req, res, next) {
       // Render the PUG template with the product data we got from the DB
        res.render('index', {
         mypackages: packdata,
-        greet_msg: ('Welcome to our travel Portal, '+greetings ),
-        date_time: ('You have logged in on,' +(new Date()).toString()),
-      });
-    }
-  );
-});
-
-/* GET one product listing. */
-router.get('/details/:packageid', function (req, res, next) {
-  const packid = req.params.packageid
-  console.log(packid);
-  getPackages(packid,
-    function (err, data) {
- 
-      if (err) throw err
-      res.render('index', {
-        mypackages: data,
-        isdetails: true,
+        greet_msg: ('Welcome to our travel Portal, '+greetings),
+        date_time: (new Date()).toString(),
         
       });
     }
   );
 });
 
+/* GET one product listing. */
 
+router.get('/details/det/:packageid', function (req, res, next) {
+  const packid = req.params.packageid
+  console.log(packid);
+  getPackages(packid,
+    function (err, data) {
+ 
+      if (err) throw err
+      res.render('det', {
+        mypackages: data,
+        isdetails: true,  
+      });
+    }
+  );
+});
 
+// load booking data
+router.post("/book", function (req, res, next) {
+  const data = req.body;
+  const booking1 = new Booking1();
+  booking1.userId = (req.user);
+  booking1.packageId = req.body.packageId;
+  booking1.TravellerCount = req.body.TravellerCount;
+  console.log(booking1.packageId);
+  booking1.save(function (err) {
+    if (err) return processErrors(err, "det", req, res, req.body);
+    res.redirect("book1");
+  });
+});
+
+/* GET the purchases page. */
+router.get("/book1", function (req, res, next) {
+  Booking1.find({ userId: (req.user) })
+    // Replace the productId with the corresponding product object from the products collection(table)
+    //console.log(Booking1)
+    .populate("packageId")
+    .exec((err, booking1) => {
+      if (err) console.log(err);
+      res.render("book1", { booking1 });
+    });
+});
+
+/* Process the product return, sent as GET request, for the given product Id. */
+router.get("/return/:bookingid", function (req, res, next) {
+  const bookingid = req.params.bookingid;
+  Booking1.findOneAndDelete({ _id: bookingid }, (err) => {
+    if (err) console.log(err);
+    res.redirect("/"); // Redirect to the purchases page
+  });
+});
 
 module.exports = router;
 

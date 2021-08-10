@@ -4,6 +4,10 @@ var express = require('express');
 
 var router = express.Router();
 
+var mongoose = require("mongoose");
+
+var uniqueValidator = require("mongoose-unique-validator");
+
 var Contact = require('../models/contact').Contact;
 
 router.get('/', function (req, res, next) {

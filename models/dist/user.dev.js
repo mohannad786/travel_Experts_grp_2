@@ -3,8 +3,13 @@
 // Using Node.js `require()`
 var mongoose = require("mongoose");
 
-var uniqueValidator = require("mongoose-unique-validator"); //var mongoDBurl = "mongodb://localhost:27017/blog";
+var uniqueValidator = require("mongoose-unique-validator");
 
+var _require = require("./agent"),
+    Agent = _require.Agent;
+
+var _require2 = require("./customer"),
+    Customer = _require2.Customer;
 
 mongoose.connect(process.env.MONGO_URL || mongoDBurl, {
   useNewUrlParser: true,
@@ -63,6 +68,16 @@ var userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     "default": "customer"
+  },
+  customerId: {
+    type: Number,
+    ref: "Customer",
+    "default": null
+  },
+  agentId: {
+    type: Number,
+    ref: "Agent",
+    "default": null
   }
 });
 userSchema.plugin(uniqueValidator); // Create a model User using the userSchema
