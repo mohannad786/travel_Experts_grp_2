@@ -17,14 +17,6 @@ var _require2 = require("../models/booking1"),
 
 var myarray = ['ready for some exciting time', 'how are you today', 'good to see you', 'hope you are having a good day'];
 
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-
-  res.redirect('/signup');
-}
-
 function getPackages(pid, callback) {
   mongo.connect(process.env.MONGO_URL, {
     // Create the DB connection
@@ -85,25 +77,33 @@ router.get('/details/det/:packageid', function (req, res, next) {
       isdetails: true
     });
   });
-}); // load booking data
+}); // middleware that is specific to this router,
+// checks that the user must be logged in
+// router.use((req, res, next) => {
+//   console.log('Time: ', Date.now());
+//   if (!req.user) res.status(403).redirect("/signup");
+//   //else if (req.user.role != "agent") res.status(403).redirect("/");
+//   else next();
+// });
+// load booking data
 
 router.post("/book", function (req, res, next) {
   var data = req.body;
   var booking1 = new Booking1();
-  booking1.userId = req.user;
+  booking1.userId = 3;
   booking1.packageId = req.body.packageId;
   booking1.TravellerCount = req.body.TravellerCount;
   console.log(booking1.packageId);
   booking1.save(function (err) {
     if (err) return processErrors(err, "det", req, res, req.body);
-    res.redirect("book1");
+    res.redirect("/book1");
   });
 });
 /* GET the purchases page. */
 
 router.get("/book1", function (req, res, next) {
   Booking1.find({
-    userId: req.user
+    userId: 3
   }) // Replace the productId with the corresponding product object from the products collection(table)
   //console.log(Booking1)
   .populate("packageId").exec(function (err, booking1) {

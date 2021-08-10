@@ -24,9 +24,9 @@ block content
             form(action="/book" method="POST")
               .input_wrapper
                 label(for="TravellerCount") Number of Guests
-                input(type="number" id="TravellerCount" name="TravellerCount" required)
-                input(type='hidden' name="packageId" value= pack && pack._id)
-              .input_wrapper
+                input(type="number" id="TravellerCount" name="TravellerCount" required min=1)
+                input(type='hidden' name="packageId" value= pack && pack._id) 
+                
                 input.btn.btn-primary(type='submit' value='Book Package')
 
           
