@@ -58,8 +58,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/details/det/:packageid', function (req, res, next) {
   const packid = req.params.packageid
-  console.log(packid);
-  getPackages(packid,
+   getPackages(packid,
     function (err, data) {
  
       if (err) throw err
@@ -71,11 +70,14 @@ router.get('/details/det/:packageid', function (req, res, next) {
   );
 });
 
-// middleware that is specific to this router,
-// checks that the user must be logged in
+//middleware that is specific to this router,
+//checks that the user must be logged in
 // router.use((req, res, next) => {
 //   console.log('Time: ', Date.now());
-//   if (!req.user) res.status(403).redirect("/signup");
+//   if (!req.user){ 
+//     req.session.msg="Please login before booking";
+//      res.status(403).redirect("/");
+//   }
 //   //else if (req.user.role != "agent") res.status(403).redirect("/");
 //   else next();
 // });
@@ -87,18 +89,16 @@ router.post("/book", function (req, res, next) {
   booking1.userId = 3;
   booking1.packageId = req.body.packageId;
   booking1.TravellerCount = req.body.TravellerCount;
-  console.log(booking1.packageId);
+  
   booking1.save(function (err) {
     if (err) return processErrors(err, "det", req, res, req.body);
     res.redirect("/book1");
   });
 });
 
-/* GET the purchases page. */
+/* GET the booking page. */
 router.get("/book1", function (req, res, next) {
-  Booking1.find({ userId: 3 })
-    // Replace the productId with the corresponding product object from the products collection(table)
-    //console.log(Booking1)
+  Booking1.find({ userId:3 })
     .populate("packageId")
     .exec((err, booking1) => {
       if (err) console.log(err);
@@ -106,7 +106,7 @@ router.get("/book1", function (req, res, next) {
     });
 });
 
-/* Process the product return, sent as GET request, for the given product Id. */
+// Process the cancel booking
 router.get("/return/:bookingid", function (req, res, next) {
   const bookingid = req.params.bookingid;
   Booking1.findOneAndDelete({ _id: bookingid }, (err) => {

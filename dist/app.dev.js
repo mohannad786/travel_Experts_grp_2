@@ -42,7 +42,19 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(express["static"](path.join(__dirname, 'public')));
+app.use(express["static"](path.join(__dirname, 'public'))); // -------------------------------------------------------------
+// For Passport.js
+
+require("./my-passport").init(app); // -------------------------------------------------------------
+//  Put the messages in the res.locals
+
+
+app.use(function (req, res, next) {
+  res.locals.message = req.session.msg; // Read the message from the session variable
+
+  req.session.msg = null;
+  next();
+});
 app.use('/', indexRouter);
 app.use("/contact", contactRouter);
 app.use("/signup", signupRouter); //app.use("/booking1", booking1Router);
@@ -59,19 +71,10 @@ app.use('/thankyou', function (req, res, next) {
 });
 app.use('/aboutus', function (req, res, next) {
   res.render('aboutus');
-}); // -------------------------------------------------------------
-// For Passport.js
-
-require("./my-passport").init(app); // -------------------------------------------------------------
-//  Put the messages in the res.locals
-
-
-app.use(function (req, res, next) {
-  res.locals.message = req.session.msg; // Read the message from the session variable
-
-  req.session.msg = null;
-  next();
-}); // catch 404 and forward to error handler
+}); // app.use('/log-out', function(req, res, next) {
+//   res.render('logout');
+// });
+// catch 404 and forward to error handler
 
 app.use(function (req, res, next) {
   next(createError(404));

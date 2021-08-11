@@ -12,7 +12,7 @@ body {
   /*background-color:#EFEFEF;*/
   line-height: 1.6;
   /* set the margin to 0 so you control the margin not the browser default  */
-  margin: 60px;
+  margin: 0px;
 }
 
 h1 {
@@ -333,6 +333,10 @@ footer a:hover {
       'call2'
       'events'
       'art';
+  }
+
+  .container:hover {
+    opacity: 5;
   }
 
   .contact-grid-container {

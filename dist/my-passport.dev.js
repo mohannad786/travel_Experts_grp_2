@@ -95,7 +95,7 @@ module.exports.init = function (app) {
 
   app.get('/log-out', function (req, res) {
     req.logout();
-    res.redirect("signup");
+    res.redirect("/");
   });
 };
 //# sourceMappingURL=my-passport.dev.js.map

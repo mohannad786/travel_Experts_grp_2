@@ -51,14 +51,16 @@ module.exports.init = function (app) {
   // Initialize Passport
   app.use(passport.initialize());
   app.use(passport.session());
-  // Login Endpoint, recieves the user login from a login form
-  // app.post("/login",
-  //   passport.authenticate("local", { failureRedirect: "/" }),
-  //   function (req, res) {
-  //     const headermessage = `Welcome ${req.user?.username}`;
-  //     res.redirect("/?headermessage=" + headermessage);
-  //   }
-  // );
+  //Login Endpoint, recieves the user login from a login form
+  app.post("/login",
+    passport.authenticate("local", { failureRedirect: "/" }),
+    function (req, res) {
+      const headermessage = `Welcome ${req.user?.username}`;
+      res.redirect("/?headermessage=" + headermessage);
+    }
+  );
+
+  
   // After login, adds the user object to locals.currentUser which is accesible in the .pug files
   app.post("/login", function (req, res, next) {
     passport.authenticate("local", function (err, user, info) {
@@ -87,6 +89,6 @@ module.exports.init = function (app) {
   // The logout endpoint
   app.get('/log-out', (req, res) => {
     req.logout();
-    res.redirect("signup");
+    res.redirect("/thankyou");
   });
 };
