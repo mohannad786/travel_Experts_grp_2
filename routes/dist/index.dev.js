@@ -15,7 +15,7 @@ var _require2 = require("../models/booking1"),
     Booking1 = _require2.Booking1; // Generate random Greeting Program
 
 
-var myarray = ['ready for some exciting time', 'how are you today', 'good to see you', 'hope you are having a good day'];
+var myarray = ['ready for some exciting time', 'how are you today', 'good to see you', 'hope you are having a good day']; // Function to display packages also used to send greeting message 
 
 function getPackages(pid, callback) {
   mongo.connect(process.env.MONGO_URL, {
@@ -60,12 +60,12 @@ router.get('/', function (req, res, next) {
 
     res.render('index', {
       mypackages: packdata,
-      greet_msg: 'Welcome to our travel Portal, ' + greetings,
+      greet_msg: 'Welcome to our Travel Portal ',
       date_time: new Date().toString()
     });
   });
 });
-/* GET one product listing. */
+/* GET one package listing. */
 
 router.get('/details/det/:packageid', function (req, res, next) {
   var packid = req.params.packageid;
@@ -99,8 +99,7 @@ router.post("/book", function (req, res, next) {
     if (err) return processErrors(err, "det", req, res, req.body);
     res.redirect("/book1");
   });
-});
-/* GET the booking page. */
+}); // GET the booking page.
 
 router.get("/book1", function (req, res, next) {
   Booking1.find({

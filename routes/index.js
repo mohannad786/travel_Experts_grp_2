@@ -8,7 +8,7 @@ const { Booking1 } = require("../models/booking1");
 // Generate random Greeting Program
 var myarray = ['ready for some exciting time', 'how are you today', 'good to see you', 'hope you are having a good day']
 
-
+// Function to display packages also used to send greeting message 
 function getPackages(pid, callback) {
   mongo.connect(process.env.MONGO_URL, {  // Create the DB connection
     useNewUrlParser: true,
@@ -47,14 +47,14 @@ router.get('/', function (req, res, next) {
       // Render the PUG template with the product data we got from the DB
        res.render('index', {
         mypackages: packdata,
-        greet_msg: ('Welcome to our travel Portal, '+greetings ),
+        greet_msg: ('Welcome to our Travel Portal '),
         date_time: (new Date()).toString(),
       });
     }
   );
 });
 
-/* GET one product listing. */
+/* GET one package listing. */
 
 router.get('/details/det/:packageid', function (req, res, next) {
   const packid = req.params.packageid
@@ -96,7 +96,7 @@ router.post("/book", function (req, res, next) {
   });
 });
 
-/* GET the booking page. */
+// GET the booking page.
 router.get("/book1", function (req, res, next) {
   Booking1.find({ userId:3 })
     .populate("packageId")

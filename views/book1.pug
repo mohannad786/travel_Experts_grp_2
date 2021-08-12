@@ -6,25 +6,28 @@ block content
   .container
    
     h2  Bookings
-        //- if !booking
-        //-   h3 You don't have any bookings.
-        //- else 
+        
     .row
       each booking in booking1
         .card.col-sm-12
           img.card-img-top.mx-auto(src=booking.packageId.imgpath style=" max-width:400px;")              
-          h5 #{booking.packageId.packname}
-          h5 #{booking.packageId.packdetail}
-          h6
-            | TravellerCount : #{booking.TravellerCount}
-          h6
-            | Unit Price: #{booking.packageId.price}
-          h6
-            | Total Price: #{booking.packageId.price * booking.TravellerCount}
+          h4 
+            | #{booking.packageId.packname}
+          h5 
+            | #{booking.packageId.packdetail}
+          h5
+            | Packages purchased: #{booking.TravellerCount}
+          h5
+            | Unit Price $: #{booking.packageId.price}
+          h5
+            | Total Price $: #{booking.packageId.price * booking.TravellerCount}
           p.card-text
             form(action='/return/'+booking._id method='get')
-              .input_wrapper
-              input.btn.btn-primary(type='submit' value='Cancel Reservation') 
+              
+              input.btn.btn-primary(type='submit' value='Cancel Reservation.') 
+            <br>
+            form(action='/')
+              input.btn.btn-primary(type='submit' value='Confirm Reservation')
               
                   
                     

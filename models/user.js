@@ -1,4 +1,4 @@
-// Using Node.js `require()`
+// // Create a model for User data for registeration
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const { Agent } = require("./agent");

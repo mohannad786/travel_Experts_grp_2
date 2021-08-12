@@ -3,10 +3,9 @@ extends layout
 block content
   <br>
   <br>
-  h3 #{greet_msg}
-  h3 #{currentUser&&currentUser.username}
+  h3 #{greet_msg} #{currentUser&&currentUser.username}
   h3 #{date_time}
-  h3 #{message}
+  
   .container
     <br>
     <br>
@@ -18,8 +17,8 @@ block content
             a(href='/details/det/'+ pack.packid)
               img.card-img-top(src=pack.imgpath alt='...')
             a(href='/details/det/'+ pack.packid)
-              h4.card-title #{pack.packname}
-              h4.card-title #{pack.packdetail}
+              h5.card-title #{pack.packname}
+              h5.card-title #{pack.packdetail}
               
       
         

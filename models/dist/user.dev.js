@@ -1,6 +1,6 @@
 "use strict";
 
-// Using Node.js `require()`
+// // Create a model for User data for registeration
 var mongoose = require("mongoose");
 
 var uniqueValidator = require("mongoose-unique-validator");

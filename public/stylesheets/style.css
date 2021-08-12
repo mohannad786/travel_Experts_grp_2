@@ -74,7 +74,17 @@ figcaption {
   left: .5vw;
 }
 
+label {
 
+  text-align: right;
+  width: 180px;
+  font-size: 30px;
+  color: #037AAF;
+}
+
+input {
+  padding: 5px 10px;
+}
 
 /* -------------------------------Header Section------------------------------- */
 
