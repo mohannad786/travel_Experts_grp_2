@@ -1,5 +1,6 @@
 "use strict";
 
+// Data model for Agents
 var mongoose = require("mongoose");
 
 var uniqueValidator = require("mongoose-unique-validator");

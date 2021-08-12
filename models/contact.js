@@ -1,3 +1,5 @@
+// Create a model for contact form 
+
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const { Schema } = mongoose;

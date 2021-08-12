@@ -1,3 +1,4 @@
+// Create a model for Travel Packages 
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 

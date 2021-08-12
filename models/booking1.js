@@ -1,5 +1,6 @@
 
-// Using Node.js `require()`
+// Create a model booking packages 
+
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const { Schema } = mongoose;

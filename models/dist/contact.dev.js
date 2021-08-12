@@ -1,5 +1,6 @@
 "use strict";
 
+// Create a model for contact form 
 var mongoose = require("mongoose");
 
 var uniqueValidator = require("mongoose-unique-validator");

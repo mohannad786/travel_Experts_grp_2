@@ -1,5 +1,6 @@
 "use strict";
 
+// Create a model for Travel Packages 
 var mongoose = require("mongoose");
 
 var uniqueValidator = require("mongoose-unique-validator");

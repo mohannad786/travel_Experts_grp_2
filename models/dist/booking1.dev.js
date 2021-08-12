@@ -1,6 +1,6 @@
 "use strict";
 
-// Using Node.js `require()`
+// Create a model booking packages 
 var mongoose = require("mongoose");
 
 var uniqueValidator = require("mongoose-unique-validator");
